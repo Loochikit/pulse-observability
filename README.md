@@ -20,6 +20,6 @@ Para sacarle el máximo provecho en tu LinkedIn, graba un video corto de la pant
 >
 > Este proyecto me ha permitido comprender a fondo la importancia de la observabilidad, las métricas de latencia de red y cómo gestionar la inyección de fallos en arquitecturas modernas.
 >
-> 🔗 Código fuente y arquitectura detallada en GitHub: `[Pega aquí el enlace a tu repositorio de GitHub]`
+> 🔗 Código fuente y arquitectura detallada en GitHub: https://github.com/Loochikit/pulse-observability.git
 >
 > #SoftwareEngineering #Observability #DevOps #SRE #JavaScript #WebDevelopment #Portfolio #GitHub
