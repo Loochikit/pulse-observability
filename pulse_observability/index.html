@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO & Portfolio Optimization -->
+  <title>Pulse - Portal de Observabilidad y Telemetría Distribuida en Tiempo Real</title>
+  <meta name="description" content="Proyecto de portafolio de Ingeniería de Software que simula observabilidad, telemetría y simulación de incidentes en tiempo real para microservicios.">
+  <meta name="author" content="Bryan Law - Portfolio Project">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- Estilos Premium -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Glassmorphism Navigation Bar -->
+  <header>
+    <div class="brand-section">
+      <div class="logo-icon">P</div>
+      <div class="brand-title">
+        <h1>PULSE // ENGINE</h1>
+        <p>Telemetría Distribuidora & Observabilidad de Red</p>
+      </div>
+    </div>
+    
+    <div class="system-status-indicator">
+      <div class="status-dot" id="global-status-dot"></div>
+      <span id="global-status-text" style="font-family: 'JetBrains Mono', monospace; font-weight: 700; letter-spacing: 0.5px;">SISTEMA OPERANDO NOMINAL</span>
+    </div>
+  </header>
+
+  <!-- Main Dashboard Container -->
+  <main class="dashboard-container">
+    
+    <!-- Sidebar: Controladores & Info del Desarrollador -->
+    <aside class="sidebar">
+      
+      <!-- Panel de Control e Incidentes -->
+      <section class="card">
+        <h2 class="card-title">Simulador de Incidentes <span>SRE Testbed</span></h2>
+        <p style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.45;">
+          Haz clic en cualquier incidente para inyectar una anomalía crítica en la red de microservicios y observa cómo reacciona el motor de observabilidad en tiempo real.
+        </p>
+        <div class="control-grid">
+          <button class="btn btn-trigger" onclick="triggerIncident('ddos')">
+            <span>Ataque DDoS Masivo</span> <span>⚡</span>
+          </button>
+          <button class="btn btn-trigger" onclick="triggerIncident('memory_leak')">
+            <span>Fuga de Memoria (Leak)</span> <span>💾</span>
+          </button>
+          <button class="btn btn-trigger" onclick="triggerIncident('cpu_spike')">
+            <span>Pico de CPU de Transacciones</span> <span>🔥</span>
+          </button>
+          <button class="btn btn-normal" style="margin-top: 0.5rem;" onclick="clearIncidents()">
+            <span>Restaurar Servicios (Hot-Fix)</span> <span>✅</span>
+          </button>
+        </div>
+      </section>
+      
+      <!-- Ficha Profesional de Ingeniería de Software -->
+      <section class="card academic-card">
+        <h2 class="card-title">Desarrollador <span>Profile</span></h2>
+        <p>
+          Este proyecto demuestra competencias clave en la construcción de sistemas distribuidos con alto rendimiento visual, optimización de renderizado interactivo (Canvas API) y modelado de reglas de telemetría e incidentes.
+        </p>
+        <div class="academic-meta">
+          <div>
+            <span>Ingeniero:</span>
+            <span>Bryan Law</span>
+          </div>
+          <div>
+            <span>Rol Objetivo:</span>
+            <span>Backend / Systems / Cloud Engineer</span>
+          </div>
+          <div>
+            <span>Especialidad:</span>
+            <span>Concurrencia & Networking</span>
+          </div>
+          <div>
+            <span>Estado Académico:</span>
+            <span>Último Año (Senior)</span>
+          </div>
+        </div>
+      </section>
+      
+    </aside>
+
+    <!-- Main Workspace: Métricas en vivo de Microservicios & Consola de Logs -->
+    <div class="main-workspace">
+      
+      <!-- Grid de Microservicios Monitoreados -->
+      <section class="servers-grid">
+        
+        <!-- Microservicio 1: Alpha (Auth) -->
+        <article class="card server-card healthy" id="srv-alpha">
+          <div class="server-header">
+            <div class="server-info">
+              <h3>Microservice Alpha</h3>
+              <p>IP: 10.0.0.12 // Service-Auth</p>
+            </div>
+            <span class="server-status-badge">healthy</span>
+          </div>
+          
+          <div class="metric-row">
+            <div class="metric-label-group">
+              <span>Uso de CPU</span>
+              <span class="metric-value" id="srv-alpha-cpu-val">0.0%</span>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-bar" id="srv-alpha-cpu-bar"></div>
+            </div>
+          </div>
+          
+          <div class="metric-row">
+            <div class="metric-label-group">
+              <span>Uso de Memoria</span>
+              <span class="metric-value" id="srv-alpha-mem-val">0.0%</span>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-bar" id="srv-alpha-mem-bar"></div>
+            </div>
+          </div>
+          
+          <div class="canvas-wrapper">
+            <canvas id="chart-alpha"></canvas>
+          </div>
+          
+          <div class="server-network-metrics">
+            <div class="net-metric-item"> Latencia: <span id="srv-alpha-latency">0 ms</span></div>
+            <div class="net-metric-item"> Inbound: <span id="srv-alpha-net-in">0.0</span> MB/s</div>
+            <div class="net-metric-item"> Outbound: <span id="srv-alpha-net-out">0.0</span> MB/s</div>
+          </div>
+        </article>
+
+        <!-- Microservicio 2: Beta (Gateway) -->
+        <article class="card server-card healthy" id="srv-beta">
+          <div class="server-header">
+            <div class="server-info">
+              <h3>Microservice Beta</h3>
+              <p>IP: 10.0.0.13 // API-Gateway</p>
+            </div>
+            <span class="server-status-badge">healthy</span>
+          </div>
+          
+          <div class="metric-row">
+            <div class="metric-label-group">
+              <span>Uso de CPU</span>
+              <span class="metric-value" id="srv-beta-cpu-val">0.0%</span>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-bar" id="srv-beta-cpu-bar"></div>
+            </div>
+          </div>
+          
+          <div class="metric-row">
+            <div class="metric-label-group">
+              <span>Uso de Memoria</span>
+              <span class="metric-value" id="srv-beta-mem-val">0.0%</span>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-bar" id="srv-beta-mem-bar"></div>
+            </div>
+          </div>
+          
+          <div class="canvas-wrapper">
+            <canvas id="chart-beta"></canvas>
+          </div>
+          
+          <div class="server-network-metrics">
+            <div class="net-metric-item"> Latencia: <span id="srv-beta-latency">0 ms</span></div>
+            <div class="net-metric-item"> Inbound: <span id="srv-beta-net-in">0.0</span> MB/s</div>
+            <div class="net-metric-item"> Outbound: <span id="srv-beta-net-out">0.0</span> MB/s</div>
+          </div>
+        </article>
+
+        <!-- Microservicio 3: Gamma (DB) -->
+        <article class="card server-card healthy" id="srv-gamma">
+          <div class="server-header">
+            <div class="server-info">
+              <h3>Microservice Gamma</h3>
+              <p>IP: 10.0.0.14 // Inventory-DB</p>
+            </div>
+            <span class="server-status-badge">healthy</span>
+          </div>
+          
+          <div class="metric-row">
+            <div class="metric-label-group">
+              <span>Uso de CPU</span>
+              <span class="metric-value" id="srv-gamma-cpu-val">0.0%</span>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-bar" id="srv-gamma-cpu-bar"></div>
+            </div>
+          </div>
+          
+          <div class="metric-row">
+            <div class="metric-label-group">
+              <span>Uso de Memoria</span>
+              <span class="metric-value" id="srv-gamma-mem-val">0.0%</span>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-bar" id="srv-gamma-mem-bar"></div>
+            </div>
+          </div>
+          
+          <div class="canvas-wrapper">
+            <canvas id="chart-gamma"></canvas>
+          </div>
+          
+          <div class="server-network-metrics">
+            <div class="net-metric-item"> Latencia: <span id="srv-gamma-latency">0 ms</span></div>
+            <div class="net-metric-item"> Inbound: <span id="srv-gamma-net-in">0.0</span> MB/s</div>
+            <div class="net-metric-item"> Outbound: <span id="srv-gamma-net-out">0.0</span> MB/s</div>
+          </div>
+        </article>
+
+        <!-- Microservicio 4: Delta (Payment) -->
+        <article class="card server-card healthy" id="srv-delta">
+          <div class="server-header">
+            <div class="server-info">
+              <h3>Microservice Delta</h3>
+              <p>IP: 10.0.0.15 // Payment-Gateway</p>
+            </div>
+            <span class="server-status-badge">healthy</span>
+          </div>
+          
+          <div class="metric-row">
+            <div class="metric-label-group">
+              <span>Uso de CPU</span>
+              <span class="metric-value" id="srv-delta-cpu-val">0.0%</span>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-bar" id="srv-delta-cpu-bar"></div>
+            </div>
+          </div>
+          
+          <div class="metric-row">
+            <div class="metric-label-group">
+              <span>Uso de Memoria</span>
+              <span class="metric-value" id="srv-delta-mem-val">0.0%</span>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-bar" id="srv-delta-mem-bar"></div>
+            </div>
+          </div>
+          
+          <div class="canvas-wrapper">
+            <canvas id="chart-delta"></canvas>
+          </div>
+          
+          <div class="server-network-metrics">
+            <div class="net-metric-item"> Latencia: <span id="srv-delta-latency">0 ms</span></div>
+            <div class="net-metric-item"> Inbound: <span id="srv-delta-net-in">0.0</span> MB/s</div>
+            <div class="net-metric-item"> Outbound: <span id="srv-delta-net-out">0.0</span> MB/s</div>
+          </div>
+        </article>
+
+      </section>
+
+      <!-- Consola de Logs Consolidados en Tiempo Real -->
+      <section class="card chart-card">
+        <h2 class="card-title">Consola de Logs Distribuidos <span>Unified Syslog</span></h2>
+        <div class="logs-console" id="logs-console">
+          <!-- Las líneas de logs se inyectan dinámicamente mediante JS -->
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>Pulse Observability System & Telemetry Engine // Código Abierto Licencia MIT // Diseñado por Bryan Law // 2026</p>
+  </footer>
+
+  <!-- Scripts del Motor del Portal -->
+  <script src="charts.js"></script>
+  <script src="telemetry.js"></script>
+</body>
+</html>
