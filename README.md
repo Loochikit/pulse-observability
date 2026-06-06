@@ -1,25 +1,43 @@
+# ⚡ Pulse Observability Engine // SRE Chaos Testbed
+
+**Pulse** es un portal web interactivo de telemetría, observabilidad y simulación de incidentes en tiempo real para mallas de microservicios distribuidos. 
+
+Este proyecto demuestra competencias avanzadas en **optimización de renderizado interactivo en el cliente**, **diseño visual premium (Glassmorphism)** y **modelado de pipelines de eventos syslog distribuidos** sin dependencias de librerías externas.
 
 ---
 
-## 💼 Estrategia de LinkedIn para Atraer Reclutadores
+## 🚀 Características Clave
 
-Para sacarle el máximo provecho en tu LinkedIn, graba un video corto de la pantalla (de unos 30-45 segundos) donde muestres el sistema operando de manera normal y luego haz clic en el botón de **Ataque DDoS** para que se vea cómo cambian las gráficas a crítico y cómo se actualizan los logs de alertas en la consola en tiempo real. 
+*   **Motor Gráfico HTML5 Canvas Nativo:** Gráficas de rendimiento fluido con curvas Bezier y gradientes de color dinámicos. Diseñado específicamente para evitar sobrecargas de procesamiento por el Garbage Collector (GC Spikes) reusando arrays de datos.
+*   **Simulador de Caos e Incidentes (SRE Testbed):** Inyección manual de anomalías de red para auditar la respuesta del sistema:
+    *   *Ataque DDoS Masivo:* Picos críticos de tráfico y latencia de red.
+    *   *Fuga de Memoria (DB Memory Leak):* Pérdida progresiva y acumulación de RAM.
+    *   *Pico de CPU de Transacciones:* Cargas de procesamiento repentinas en pasarelas de pago.
+*   **Consola de Logs Distribuidos (Syslog Pipeline):** Procesamiento unificado de eventos de estado con colores reactivos basados en la severidad (Healthy, Warning, Critical).
+*   **Diseño Visual de Vanguardia:** Interfaz premium con Glassmorphism (efectos translúcidos de cristal), paleta HSL adaptativa y micro-animaciones.
 
-### Plantilla de Copia para el Post de LinkedIn:
+---
 
-> 🚀 **¿Cómo monitorear microservicios distribuidos en tiempo real sin dependencias externas?**
->
-> Para mi proyecto final de Ingeniería de Software, decidí alejarme de los típicos clones de aplicaciones y construir algo que enfrente problemas reales del mundo de producción y la ingeniería de confiabilidad de sitios (SRE): **Pulse Observability Engine**.
-> 
-> Es un portal de telemetría y observabilidad en tiempo real que simula una malla de microservicios e implementa un motor de inyección de caos y anomalías (Ataques DDoS, Fugas de Memoria en base de datos y picos de CPU transaccionales).
->
-> 💻 **Logros técnicos del proyecto:**
-> * **Gráficas de Alto Rendimiento en Canvas:** En lugar de importar librerías pesadas, diseñé desde cero un motor gráfico en HTML5 Canvas con curvas Bezier cuadráticas y gradientes fluidos, optimizado para evitar fugas de memoria por recolección de basura (*Garbage Collector*) en el cliente.
-> * **Diseño Visual de Vanguardia:** Interfaz premium con Glassmorphism (efectos translúcidos de cristal), paleta HSL reactiva a alertas y estados dinámicos.
-> * **Consola de Logs Distribuidos:** Pipeline unificado de Syslog que procesa eventos de estado y dispara alertas audibles/visuales cuando los umbrales exceden los límites normales.
->
-> Este proyecto me ha permitido comprender a fondo la importancia de la observabilidad, las métricas de latencia de red y cómo gestionar la inyección de fallos en arquitecturas modernas.
->
-> 🔗 Código fuente y arquitectura detallada en GitHub: https://github.com/Loochikit/pulse-observability.git
->
-> #SoftwareEngineering #Observability #DevOps #SRE #JavaScript #WebDevelopment #Portfolio #GitHub
+## 🛠️ Tecnologías Utilizadas
+
+*   **Core:** HTML5 (Estructura semántica), JavaScript (Lógica de animación y simulación de eventos, ES6+).
+*   **Diseño y Estilos:** CSS3 nativo (Variables CSS, Flexbox, CSS Grid, desenfoques `backdrop-filter`).
+*   **Renderizado de Datos:** API de HTML5 Canvas (sin usar librerías externas de gráficos como Chart.js o D3).
+
+---
+
+## 💻 Ejecución Local
+
+Dado que es una aplicación del lado del cliente (Frontend-Only), es extremadamente fácil de correr localmente:
+
+1. **Opción A (Doble clic):** Abre el explorador de archivos y haz doble clic sobre el archivo `index.html` para abrirlo directamente en cualquier navegador moderno.
+2. **Opción B (Servidor Estático Local):** Si tienes el servidor de Node del workspace activo, abre tu navegador e ingresa a:
+   👉 **`http://localhost:3000/pulse_observability/index.html`**
+
+---
+
+## 💡 Conceptos de Ingeniería de Software Demostrados
+
+*   **Eficiencia Gráfica en Canvas:** Implementación manual del refresco de pantalla mediante la API de dibujo en 2D. Optimización del consumo de memoria limpiando y reutilizando coordenadas en lugar de instanciar nuevos objetos en cada ciclo de pintado, reduciendo el trabajo de recolección de basura (*Garbage Collector Overhead*).
+*   **Manejo de Estados de Telemetría:** Simulación determinista de anomalías de red basadas en modelos matemáticos para representar ataques DDoS (incremento exponencial de TPS y latencia) o fugas de memoria (acumulación aritmética progresiva).
+*   **Diseño Modular:** Separación clara de responsabilidades entre el renderizador gráfico (`charts.js`) y la lógica de simulación de telemetría e incidencias (`telemetry.js`).
